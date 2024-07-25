@@ -1,4 +1,3 @@
-import 'package:drift_wasm_example/database/connection/web-wasm.dart';
 import 'package:drift_wasm_example/database/dao/drift_actor_dao.dart';
 import 'package:drift_wasm_example/database/drift_database.dart';
 import 'package:drift_wasm_example/database/entities/drift_actor_entity.dart';
@@ -47,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _initializeDatabase() async {
     print("initialize drift database");
-    _database = await createDatabase();
+    _database = DriftDatabaseImpl();
     _actorDao = _database.driftActorDao;
   }
 

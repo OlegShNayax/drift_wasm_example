@@ -62,9 +62,10 @@ class $DriftActorTableTable extends DriftActorTable
         actorMachinesCount
       ];
   @override
-  String get aliasedName => _alias ?? 'actor';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'actor';
+  String get actualTableName => $name;
+  static const String $name = 'actor';
   @override
   VerificationContext validateIntegrity(Insertable<DriftActorEntity> instance,
       {bool isInserting = false}) {
@@ -262,6 +263,7 @@ class DriftActorTableCompanion extends UpdateCompanion<DriftActorEntity> {
 
 abstract class _$DriftDatabaseImpl extends GeneratedDatabase {
   _$DriftDatabaseImpl(QueryExecutor e) : super(e);
+  $DriftDatabaseImplManager get managers => $DriftDatabaseImplManager(this);
   late final $DriftActorTableTable driftActorTable =
       $DriftActorTableTable(this);
   late final DriftActorDao driftActorDao =
@@ -271,4 +273,172 @@ abstract class _$DriftDatabaseImpl extends GeneratedDatabase {
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [driftActorTable];
+}
+
+typedef $$DriftActorTableTableCreateCompanionBuilder = DriftActorTableCompanion
+    Function({
+  Value<String?> actorID,
+  Value<String?> parentActorID,
+  Value<String?> actorDescription,
+  Value<String?> actorDistributorId,
+  Value<int?> actorTypeID,
+  Value<int?> actorStatus,
+  Value<int?> actorMachinesCount,
+  Value<int> rowid,
+});
+typedef $$DriftActorTableTableUpdateCompanionBuilder = DriftActorTableCompanion
+    Function({
+  Value<String?> actorID,
+  Value<String?> parentActorID,
+  Value<String?> actorDescription,
+  Value<String?> actorDistributorId,
+  Value<int?> actorTypeID,
+  Value<int?> actorStatus,
+  Value<int?> actorMachinesCount,
+  Value<int> rowid,
+});
+
+class $$DriftActorTableTableTableManager extends RootTableManager<
+    _$DriftDatabaseImpl,
+    $DriftActorTableTable,
+    DriftActorEntity,
+    $$DriftActorTableTableFilterComposer,
+    $$DriftActorTableTableOrderingComposer,
+    $$DriftActorTableTableCreateCompanionBuilder,
+    $$DriftActorTableTableUpdateCompanionBuilder> {
+  $$DriftActorTableTableTableManager(
+      _$DriftDatabaseImpl db, $DriftActorTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$DriftActorTableTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$DriftActorTableTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String?> actorID = const Value.absent(),
+            Value<String?> parentActorID = const Value.absent(),
+            Value<String?> actorDescription = const Value.absent(),
+            Value<String?> actorDistributorId = const Value.absent(),
+            Value<int?> actorTypeID = const Value.absent(),
+            Value<int?> actorStatus = const Value.absent(),
+            Value<int?> actorMachinesCount = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DriftActorTableCompanion(
+            actorID: actorID,
+            parentActorID: parentActorID,
+            actorDescription: actorDescription,
+            actorDistributorId: actorDistributorId,
+            actorTypeID: actorTypeID,
+            actorStatus: actorStatus,
+            actorMachinesCount: actorMachinesCount,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            Value<String?> actorID = const Value.absent(),
+            Value<String?> parentActorID = const Value.absent(),
+            Value<String?> actorDescription = const Value.absent(),
+            Value<String?> actorDistributorId = const Value.absent(),
+            Value<int?> actorTypeID = const Value.absent(),
+            Value<int?> actorStatus = const Value.absent(),
+            Value<int?> actorMachinesCount = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              DriftActorTableCompanion.insert(
+            actorID: actorID,
+            parentActorID: parentActorID,
+            actorDescription: actorDescription,
+            actorDistributorId: actorDistributorId,
+            actorTypeID: actorTypeID,
+            actorStatus: actorStatus,
+            actorMachinesCount: actorMachinesCount,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$DriftActorTableTableFilterComposer
+    extends FilterComposer<_$DriftDatabaseImpl, $DriftActorTableTable> {
+  $$DriftActorTableTableFilterComposer(super.$state);
+  ColumnFilters<String> get actorID => $state.composableBuilder(
+      column: $state.table.actorID,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get parentActorID => $state.composableBuilder(
+      column: $state.table.parentActorID,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get actorDescription => $state.composableBuilder(
+      column: $state.table.actorDescription,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get actorDistributorId => $state.composableBuilder(
+      column: $state.table.actorDistributorId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get actorTypeID => $state.composableBuilder(
+      column: $state.table.actorTypeID,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get actorStatus => $state.composableBuilder(
+      column: $state.table.actorStatus,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get actorMachinesCount => $state.composableBuilder(
+      column: $state.table.actorMachinesCount,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$DriftActorTableTableOrderingComposer
+    extends OrderingComposer<_$DriftDatabaseImpl, $DriftActorTableTable> {
+  $$DriftActorTableTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get actorID => $state.composableBuilder(
+      column: $state.table.actorID,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get parentActorID => $state.composableBuilder(
+      column: $state.table.parentActorID,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get actorDescription => $state.composableBuilder(
+      column: $state.table.actorDescription,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get actorDistributorId => $state.composableBuilder(
+      column: $state.table.actorDistributorId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get actorTypeID => $state.composableBuilder(
+      column: $state.table.actorTypeID,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get actorStatus => $state.composableBuilder(
+      column: $state.table.actorStatus,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get actorMachinesCount => $state.composableBuilder(
+      column: $state.table.actorMachinesCount,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $DriftDatabaseImplManager {
+  final _$DriftDatabaseImpl _db;
+  $DriftDatabaseImplManager(this._db);
+  $$DriftActorTableTableTableManager get driftActorTable =>
+      $$DriftActorTableTableTableManager(_db, _db.driftActorTable);
 }
